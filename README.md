@@ -69,13 +69,13 @@ cd ecommerce-platform
 
 2. Install dependencies
 ```bash
-npm install express mongoose express-session express-ejs-layouts cookie-parser ejs dotenv multer jsonwebtoken bcrypt connect-flash
+npm install
 ```
 
 3. Create a .env file in the root directory and add your environment variables
 ```env
 PORT=3000
-JWT_KEY
+JWT_KEY=your_jwt_key
 EXPRESS_SESSION_SECRET=your_session_secret
 ```
 
