@@ -1,0 +1,44 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+<div class="w-full h-screen flex items-start px-20 py-20 gap-10">
+    <div class="container mx-auto my-8">
+        <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+        <div class="overflow-y-auto max-h-96 border rounded-lg p-4">
+            <% let totalPrice = 0; %>
+            <% orders.forEach(order => { %>
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h4 class="text-lg font-semibold"><%= order.name %></h4>
+                        <p class="text-gray-600"><%= order.description %></p>
+                    </div>
+                    <div>
+                        <p class="text-lg font-bold text-green-600">$ <%= order.price %></p>
+                    </div>
+                    <div class="flex ">
+                        <a href="/cart/addmoretocart/<%= order._id %>" class="bg-blue-600 text-white p-2 rounded-lg"><i class="ri-add-line"></i></a>
+                        <% const cartItemCount = user.cart.filter(item => item._id.toString() === order._id.toString()).length; %>
+                    <% if (cartItemCount > 0) { %>
+                        <p class="text-lg font-bold text-green-600 mx-2 p-2">x<%= cartItemCount %></p>
+                    <%}%>
+                    <a href="/cart/removefromcart/<%= order._id %>" class="bg-red-600 text-white p-2 rounded-lg"><i class="ri-subtract-line"></i></a>
+                    </div>
+                    <div>
+                        <a href="/cart/deletefromcart/<%= order._id %>" class=" "><i class="ri-delete-bin-line"></i></a>
+                    </div>
+                </div>
+                <% totalPrice += order.price*cartItemCount; %>
+            <% }); %>
+        </div>
+        <div class="mt-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold">Total Amount</h3>
+                <h3 class="text-xl font-bold text-green-600">$ <%= totalPrice %></h3>
+            </div>
+        </div>
+        <form action="/checkout" method="POST" class="mt-4">
+            <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                Proceed to Checkout
+            </button>
+        </form>
+    </div>
+</div>
