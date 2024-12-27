@@ -2,7 +2,6 @@
 
 A full-stack e-commerce platform built with Node.js, Express, MongoDB, and EJS. This application allows users to buy and sell products, manage their listings, and includes user authentication.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node.js Version](https://img.shields.io/badge/node-%3E%3D%2014.0.0-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%3E%3D%204.4-green)
 
